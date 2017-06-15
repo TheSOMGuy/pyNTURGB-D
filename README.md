@@ -11,7 +11,9 @@ If you wan't to use this project you have to do the following:
   -> create a folder and add all the files of the project
   
   -> create the following subfolder: 
+  
         -> data 
+        
         -> skeleton
   
   -> download the Dataset: https://github.com/shahroudy/NTURGB-D
