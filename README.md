@@ -12,7 +12,7 @@ If you wan't to use this project you have to do the following:
   
   -> create the following subfolder: 
   
-        -> data 
+        -> data ( actually only for the masked depth files )
         
         -> skeleton
   
