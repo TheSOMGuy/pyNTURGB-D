@@ -8,6 +8,8 @@ If you wan't to use this project you have to do the following:
   
   -> install numpy ( pip3 -install numpy )
   
+  -> install bresenham ( pip3 -install bresenham )
+  
   -> create a folder and add all the files of the project
   
   -> create the following subfolder: 
