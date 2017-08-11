@@ -123,10 +123,10 @@ def check_for_primary_skeleton( _frames_of_the_set_, _frames_2_of_the_set_, verb
 
 	# Modus: Frame k+1 - Frame k ( of the same skeleton indicated by the skeleton id )
 	for k in range(0, len(_frames_of_the_set_) - 1 ):
-			dist1 += _frames_of_the_set_[k+1].ftf_joint_diff( _frames_of_the_set_[k] )
+			dist1 += _frames_of_the_set_[k+1].ftf_joint_diff( _frames_of_the_set_[k] ,k)
 
 	for k in range(0, len(_frames_2_of_the_set_) - 1 ):
-			dist2 += _frames_2_of_the_set_[k+1].ftf_joint_diff( _frames_2_of_the_set_[k] )
+			dist2 += _frames_2_of_the_set_[k+1].ftf_joint_diff( _frames_2_of_the_set_[k] ,k )
 
 
 	if( verbose == True ):

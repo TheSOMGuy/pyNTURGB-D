@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+from PIL import Image
 
 # Reads the content of an directory as a list of filenames and returns the list
 def read_masked_depth_data( path ):

@@ -28,42 +28,43 @@ import frameHeader as f_H
 def draw_point( _data_, _depthY_, _depthX_ ):
 
 	# first row
-	_data_[_depthY_-1,_depthX_-1][0] = 42
-	_data_[_depthY_-1,_depthX_-1][1] = 255
+	_data_[_depthY_-1,_depthX_-1][0] = 255
+	_data_[_depthY_-1,_depthX_-1][1] = 42
 	_data_[_depthY_-1,_depthX_-1][2] = 0
 
-	_data_[_depthY_-1,_depthX_][0] = 42
-	_data_[_depthY_-1,_depthX_][1] = 255
+	_data_[_depthY_-1,_depthX_][0] = 255
+	_data_[_depthY_-1,_depthX_][1] = 42
 	_data_[_depthY_-1,_depthX_][2] = 0
 
-	_data_[_depthY_-1,_depthX_+1][0] = 42
-	_data_[_depthY_-1,_depthX_+1][1] = 255
+	_data_[_depthY_-1,_depthX_+1][0] = 255
+	_data_[_depthY_-1,_depthX_+1][1] = 42
 	_data_[_depthY_-1,_depthX_+1][2] = 0
 
 	# second row
-	_data_[_depthY_,_depthX_-1][0] = 42
-	_data_[_depthY_,_depthX_-1][1] = 255
+	_data_[_depthY_,_depthX_-1][0] = 255
+	_data_[_depthY_,_depthX_-1][1] = 42
 	_data_[_depthY_,_depthX_-1][2] = 0
 
-	_data_[_depthY_,_depthX_][0] = 42
-	_data_[_depthY_,_depthX_][1] = 255
+	_data_[_depthY_,_depthX_][0] = 255
+	_data_[_depthY_,_depthX_][1] = 42
 	_data_[_depthY_,_depthX_][2] = 0
 
-	_data_[_depthY_-1,_depthX_+1][0] = 42
-	_data_[_depthY_-1,_depthX_+1][1] = 255
+	_data_[_depthY_-1,_depthX_+1][0] = 255
+	_data_[_depthY_-1,_depthX_+1][1] = 42
 	_data_[_depthY_-1,_depthX_+1][2] = 0
 
 	# third row
-	_data_[_depthY_+1,_depthX_-1][0] = 42
-	_data_[_depthY_+1,_depthX_-1][1] = 255
+
+	_data_[_depthY_+1,_depthX_-1][0] = 255
+	_data_[_depthY_+1,_depthX_-1][1] = 42
 	_data_[_depthY_+1,_depthX_-1][2] = 0
 
-	_data_[_depthY_+1,_depthX_][0] = 42
-	_data_[_depthY_+1,_depthX_][1] = 255
+	_data_[_depthY_+1,_depthX_][0] = 255
+	_data_[_depthY_+1,_depthX_][1] = 42
 	_data_[_depthY_+1,_depthX_][2] = 0
 
-	_data_[_depthY_+1,_depthX_+1][0] = 42
-	_data_[_depthY_+1,_depthX_+1][1] = 255
+	_data_[_depthY_+1,_depthX_+1][0] = 255
+	_data_[_depthY_+1,_depthX_+1][1] = 42
 	_data_[_depthY_+1,_depthX_+1][2] = 0
 
 	return _data_
@@ -156,7 +157,7 @@ def show_stream( _files_, _skeleton_frames_, verbose ):
 
 			# Open the original file
 			_org_image_ = Image.open(_file_path_, 'r')
-			# Read the data from se file
+			# Open depth file
 			np_data = array(_org_image_)
 			# https://github.com/shahroudy/NTURGB-D/blob/master/Matlab/show_skeleton_on_depthmaps.m 
 			# depth maps are in millimeters we need to scale them to [0,255]
@@ -184,7 +185,7 @@ def show_stream( _files_, _skeleton_frames_, verbose ):
 
 				# Draw directly in the 3 channel RGB image we created earlier
 				draw_point( np_data, ( _depthY_ ), ( _depthX_ ) )
-
+				
 			draw_connections( np_data, _list_of_Joints_ )
 
 			# Create an imageTK photo image object ( 3x8 bit, true color) for visualisation

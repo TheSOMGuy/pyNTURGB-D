@@ -6,6 +6,8 @@ import sys
 import os
 import math as ma
 import argparse
+import lstm
+import numpy as np
 
 # Ppe module import
 
@@ -13,17 +15,19 @@ import load_skeleton as l_S
 import load_masked_depth as l_MD
 import resultWindow as r_W
 import som as som
-import hoj3d as h3d
+import hoj3d2 as h3d
 import hoj3d_tester as h3d_t
 
 def main():
 	path_name = ""
 	som_path = ""
 	show_stream = False
+	store_net = False
 	verbose = False
 
 	# Parse the command line options.
-	path_name, skeleton_name, som_path, show_stream, verbose = parseOpts( sys.argv )
+	path_name, skeleton_name, som_path, show_stream, store_net, verbose = parseOpts( sys.argv )
+
 
 	# Build the skeleton filename string
 	_skeleton_filename_ = skeleton_name + '.skeleton'
@@ -77,10 +81,11 @@ def main():
 	# Train the SOM with the data
 	if( _som_ ):
 		_som_.train_som( all_masked_depth_frames )
+
+		if( store_net ):
+			_som_.save_som_to_file( )
 	else:
 		pass
-
-
 	# ----------------------------------------------------------------------------------------------------
 	# Moin Franz,
 	# Ich hab dir hier den Funktionsaufruf für die Hoj3D Funktion schon definiert.
@@ -96,6 +101,9 @@ def main():
 	#
 	#	# Franz 
 
+	# test
+	#for a in range(100):
+	hoj_set = []
 	i = 0
 	for frame in all_skeleton_frames:
 		list_of_joints = frame.get_ListOfJoints()
@@ -111,24 +119,19 @@ def main():
 		# joints_to_compute.append(list_of_joints[17])		# r knee 	6
 		# joints_to_compute.append(list_of_joints[14])		# l feet 	7
 		# joints_to_compute.append(list_of_joints[18])		# r feet 	8
-		# joints_to_compute.append(list_of_joints[12])		# l hip 	9
-		# joints_to_compute.append(list_of_joints[16])		# r hip 	10
 
- 		# hip center, spine, hip right, hip left
-		hoj3d_set = h3d.compute_hoj3d(
-			list_of_joints, 
-			list_of_joints[0], 
-			list_of_joints[1], 
-			list_of_joints[16], 
-			list_of_joints[12], 
-			joint_indexes=[3, 5, 9, 6, 10, 13, 17, 14, 18, 12, 16], 
-			use_triangle_function=True)
+		hoj3d,time = h3d.compute_hoj3d(list_of_joints, list_of_joints[0], list_of_joints[1], list_of_joints[16], list_of_joints[12], joint_indexes=[3, 5, 9, 6, 10, 13, 17, 14, 18], use_triangle_function=True) # hip center, spine, hip right, hip left
 
-
-		filename = "{0:0=3d}".format(i)
-		h3d_t.write_hoj3d(filename,hoj3d_set)
+		# testing
+		test_filename = os.path.basename(path_name) + "_{0:0=3d}".format(i)
+		h3d_t.write_hoj3d(test_filename,hoj3d)
 		i += 1
 		# break
+		hoj_set.append(np.ravel(hoj3d))
+
+	#compute in neura network
+	label, probability, prediction = lstm.lstm_predict(lstm_model, hoj_set)
+
 	#
 	# ----------------------------------------------------------------------------------------------------
 
@@ -150,6 +153,7 @@ def parseOpts( argv ):
 	parser.add_argument("-sp", "--som_path", action='store', dest='som_path', help="The absoult path to the self-organizing map u want to use.")
 	parser.add_argument("-ss", "--show_stream", action='store_true', dest='show_stream', help="True if you want to see the image stream.")
 	parser.add_argument("-v", "--verbose", action='store_true', dest='verbose', default='False', help="True if you want to listen to the chit-chat.")
+	parser.add_argument("-sn", "--save_net", action='store_true', dest='save_net', default='False', help="True if you want to store the trained neural net.")
 
 	# finally parse the command line 
 	args = parser.parse_args()
@@ -177,9 +181,10 @@ def parseOpts( argv ):
 	print ("Set          : ", path_name)
 	print ("SOM          : ", som_path)
 	print ("ShowStream   : ", args.show_stream)
+	print ("Store NN     : ", args.save_net)
 	print ("verbose      : ", args.verbose)
 
-	return path_name, skeleton_name, som_path, args.show_stream, args.verbose
+	return path_name, skeleton_name, som_path, args.show_stream, args.save_net, args.verbose
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
