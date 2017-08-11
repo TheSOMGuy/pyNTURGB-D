@@ -27,7 +27,7 @@ def lstm_init(save = False):
 
 	# LSTM Schichten hinzufuegen
 	# 
-	model.add(LSTM(hoj_height, input_shape=(,hoj_height))
+	model.add(LSTM(hoj_height, input_shape=(None,hoj_height)))
 	model.add(LSTM(hoj_height))	# vielleicht optional
 
 	# voll vernetzte Schicht zum Herunterbrechen vorheriger Ausgabedaten auf die Menge der Klassen 
@@ -120,7 +120,7 @@ def lstm_load(filename = None):
 	f = filedialog.askopenfilename(filetypes=(("Model files","*.h5"),("all files","*.*")))
 	if f is None:
 		return None
-	else
+	else:
 		return load_model(f)
 
 		
