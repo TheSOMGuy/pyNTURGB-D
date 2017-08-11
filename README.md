@@ -30,7 +30,9 @@ Loading the RGB data and the unmasked Depth files isn't actually part of the pro
 
 Cheers
   
-**Citation** ( taken from: https://github.com/shahroudy/NTURGB-D )
+-----------------------------------------------------------------------------------------------------  
+  
+**Citation** ( source: https://github.com/shahroudy/NTURGB-D )
 
 To cite the NTU RGB+D dataset, please use this bibtex record:
 
