@@ -20,7 +20,7 @@ If you wan't to use this project you have to do the following:
   
   -> download the Dataset: https://github.com/shahroudy/NTURGB-D
   
-  -> distribute the files from the dataset to the formaly created folders ( skeleton & data )
+  -> distribute the files from the dataset to the previously created folders ( skeleton & data )
   
   -> open a terminal and switch to the project then type: ./ppe -h 
   
