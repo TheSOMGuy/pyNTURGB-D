@@ -30,6 +30,16 @@ Loading the RGB data and the unmasked Depth files isn't actually part of the pro
 
 Cheers
   
+**Citation** ( taken from: https://github.com/shahroudy/NTURGB-D )
 
+To cite the NTU RGB+D dataset, please use this bibtex record:
+
+@InProceedings{Shahroudy_2016_CVPR,
+author = {Shahroudy, Amir and Liu, Jun and Ng, Tian-Tsong and Wang, Gang},
+title = {NTU RGB+D: A Large Scale Dataset for 3D Human Activity Analysis},
+booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+month = {June},
+year = {2016}
+}
   
   
