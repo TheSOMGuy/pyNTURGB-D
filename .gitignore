@@ -1,4 +1,7 @@
 *.skeleton
 lstm_train/
 lstm_validate/
+hoj_test/
 *.pyc
+__pycache__/
+hoj-generate/__pycache__/
