@@ -112,7 +112,7 @@ def lstm_init(save = False):
 
 	
 	
-# use this funktion to load a trained neural ntework
+# use this funktion to load a trained neural network
 def lstm_load(filename = None):
 	if filename is not None:
 		return load_model(filename)

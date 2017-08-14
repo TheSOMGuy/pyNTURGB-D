@@ -89,7 +89,7 @@ def main():
 	for frame in all_skeleton_frames:
 		list_of_joints = frame.get_ListOfJoints()
 
-		# gget joints from the paper 3, 5, 9, 6, 10, 13, 17, 14, 18, 12, 16
+		# get joints from the paper 3, 5, 9, 6, 10, 13, 17, 14, 18
 		# joints_to_compute = []
 		# joints_to_compute.append(list_of_joints[3])		# head 		0
 		# joints_to_compute.append(list_of_joints[5])		# l elbow	1
@@ -98,8 +98,8 @@ def main():
 		# joints_to_compute.append(list_of_joints[10])		# r hand 	4
 		# joints_to_compute.append(list_of_joints[13])		# l knee 	5
 		# joints_to_compute.append(list_of_joints[17])		# r knee 	6
-		# joints_to_compute.append(list_of_joints[14])		# l feet 	7
-		# joints_to_compute.append(list_of_joints[18])		# r feet 	8
+		# joints_to_compute.append(list_of_joints[14])		# l foot 	7
+		# joints_to_compute.append(list_of_joints[18])		# r foot 	8
 
 		hoj3d,time = h3d.compute_hoj3d(list_of_joints, list_of_joints[0], list_of_joints[1], list_of_joints[16], list_of_joints[12], joint_indexes=[3, 5, 9, 6, 10, 13, 17, 14, 18], use_triangle_function=True) # hip center, spine, hip right, hip left
 
