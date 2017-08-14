@@ -1,1 +1,4 @@
 *.skeleton
+lstm_train/
+lstm_validate/
+*.pyc

@@ -86,8 +86,6 @@ class frameHeader():
 		# This is the bucket fpor the absoluit distance over all joints
 		_ive_come_a_long_way_baby_ = 0.0
 		
-		print(i, self)
-
 		for k in range(0, self.get_NumberOfJoints() ):
 
 			# Get the world coordinates of each joint 

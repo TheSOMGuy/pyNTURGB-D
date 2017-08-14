@@ -85,8 +85,8 @@ def main():
 			# joints_to_compute.append(list_of_joints[14])		# l feet 	7
 			# joints_to_compute.append(list_of_joints[18])		# r feet 	8
 			
-			print(list_of_joints)
-			print('\n')
+			# print(list_of_joints)
+			# print('\n')
 
 			hoj3d_set,time = h3d.compute_hoj3d(list_of_joints, list_of_joints[0], list_of_joints[1], list_of_joints[16], list_of_joints[12], joint_indexes=[3, 5, 9, 6, 10, 13, 17, 14, 18], use_triangle_function=True, n_time = time) # hip center, spine, hip right, hip left
 

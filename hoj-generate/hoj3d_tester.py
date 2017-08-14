@@ -17,6 +17,8 @@ import joint
 
 def write_hoj3d(filename,hoj_3d):
 	test_directory = '../hoj_test/'
+	if not os.path.exists(os.path.dirname(test_directory+filename)):
+		os.makedirs(os.path.dirname(test_directory+filename))
 	file = open(test_directory+filename,'wb')
 	for line in hoj_3d:
 		hoj_array = array('d', line)
